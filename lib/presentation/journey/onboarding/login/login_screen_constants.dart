@@ -7,4 +7,6 @@ class LoginScreenConstants {
   static const titlePaddingTop = 10;
   static const titleTag = 'title';
   static const logoTag = 'logo';
+  static const customerTabTitle = 'Customer';
+  static const storeTabTitle = 'Store';
 }

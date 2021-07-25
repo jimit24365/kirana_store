@@ -13,6 +13,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
+  TabController controller;
+
   @override
   Widget build(BuildContext context) => Scaffold(
           body: Stack(
@@ -32,6 +34,44 @@ class LoginScreenState extends State<LoginScreen> {
           child: Container(
             color: Colors.white,
             height: LoginScreenConstants.loginFormContainerHeight.h,
+            child: DefaultTabController(
+              length: 2,
+              initialIndex: 1,
+              child: Scaffold(
+                backgroundColor: Colors.white,
+                appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(kToolbarHeight),
+                  child: TabBar(
+                    tabs: [
+                      Tab(
+                        child: Text(
+                          LoginScreenConstants.customerTabTitle,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              .copyWith(color: Theme.of(context).primaryColor),
+                        ),
+                      ),
+                      Tab(
+                        child: Text(
+                          LoginScreenConstants.storeTabTitle,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              .copyWith(color: Theme.of(context).primaryColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                body: TabBarView(
+                  children: [
+                    Icon(Icons.people),
+                    Icon(Icons.storefront),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       );
