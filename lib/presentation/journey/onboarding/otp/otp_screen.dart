@@ -12,6 +12,8 @@ class OTPScreen extends StatefulWidget {
 }
 
 class OTPScreenState extends State<OTPScreen> {
+  final validOTP = '123123';
+  final otpThreshold = 6;
   TextEditingController textEditingController = TextEditingController();
 
   @override
@@ -36,8 +38,8 @@ class OTPScreenState extends State<OTPScreen> {
                     inValidBoxColor: Colors.redAccent,
                     validator: (value) {
                       if (value != null &&
-                          value.length == 6 &&
-                          value != '123123') {
+                          value.length == otpThreshold &&
+                          value != validOTP) {
                         return false;
                       }
                       return true;
@@ -45,8 +47,8 @@ class OTPScreenState extends State<OTPScreen> {
                     onChanged: (value) {
                       if (value != null &&
                           value.isNotEmpty &&
-                          value.length == 6 &&
-                          value == '123123') {
+                          value.length == otpThreshold &&
+                          value == validOTP) {
                         Navigator.of(context)
                             .pushReplacementNamed(RouteList.splash);
                       }
