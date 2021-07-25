@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sabka_kirana/common/constants/regex_constants.dart';
-import 'package:sabka_kirana/presentation/journey/onboarding/login/widgets/phone_prefix_icon.dart';
-import 'package:sabka_kirana/presentation/widgets/otp_box_widget/widgets/phone_number_text_input_formatter.dart';
 import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
+import 'package:sabka_kirana/presentation/widgets/phone_number_widget/phone_number_text_input_formatter.dart';
+import 'package:sabka_kirana/presentation/widgets/phone_number_widget/phone_prefix_icon.dart';
 
 class PhoneNumberInputWidget extends StatefulWidget {
   final TextEditingController textEditingController;

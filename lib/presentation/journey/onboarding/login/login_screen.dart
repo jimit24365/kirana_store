@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sabka_kirana/common/constants/common_string_constant.dart';
 import 'package:sabka_kirana/common/constants/icon_constants.dart';
-import 'package:sabka_kirana/common/constants/regex_constants.dart';
 import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/login/login_screen_constants.dart';
-import 'package:sabka_kirana/presentation/journey/onboarding/login/widgets/phone_number_input_widget.dart';
-import 'package:sabka_kirana/presentation/widgets/otp_box_widget/widgets/phone_number_text_input_formatter.dart';
+import 'package:sabka_kirana/presentation/widgets/phone_number_widget/phone_number_input_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -76,6 +73,7 @@ class LoginScreenState extends State<LoginScreen> {
                         textEditingController: phoneController,
                       ),
                     ),
+
                     // OtpWidgetStory().storyContent(context),
                   ],
                 ),
@@ -121,5 +119,3 @@ class LoginScreenState extends State<LoginScreen> {
         ),
       );
 }
-
-
