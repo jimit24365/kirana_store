@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kirana_store/common/constants/route_constants.dart';
 import 'package:kirana_store/presentation/journey/onboarding/login/login.dart';
+import 'package:kirana_store/common/libraries/screen_utils/screen_utils.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
             context,
             PageRouteBuilder(
               fullscreenDialog: true,
-              transitionDuration: Duration(seconds: 3),
+              transitionDuration: Duration(milliseconds: 400),
               transitionsBuilder: (context, animation, secondAnimation, child) {
                 return ScaleTransition(
                   scale: animation,
@@ -45,18 +45,31 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Hero(
-                tag: 'title',
-                child: Text(
-                  'Sabka Kirana',
-                  style: Theme.of(context).textTheme.headline4,
+        body: Container(
+          color: Theme.of(context).primaryColor,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Hero(
+                  tag: 'logo',
+                  child: Image.asset(
+                    'assets/icons/store_white.png',
+                    height: 200.h,
+                  ),
                 ),
-              ),
-            ],
+                Hero(
+                  tag: 'title',
+                  child: Text(
+                    'Sabka Kirana',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline3
+                        .copyWith(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
