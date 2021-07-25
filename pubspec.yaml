@@ -1,5 +1,5 @@
-name: kirana_store
-description: A new Flutter project.
+name: Sabka Kirana
+description: Common portal for all grocery store.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -22,3 +22,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/
+    - assets/icons/white/
+    - assets/icons/black/

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:kirana_store/common/constants/icon_constants.dart';
 import 'package:kirana_store/common/libraries/screen_utils/screen_utils.dart';
 
 class Login extends StatelessWidget {
@@ -24,7 +25,7 @@ class Login extends StatelessWidget {
                               child: Hero(
                                 tag: 'logo',
                                 child: Image.asset(
-                                  'assets/icons/store_white.png',
+                                  IconConstants.whiteLogo,
                                   height: 100.h,
                                 ),
                               ),
