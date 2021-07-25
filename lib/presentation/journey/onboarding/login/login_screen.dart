@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sabka_kirana/common/constants/common_string_constant.dart';
 import 'package:sabka_kirana/common/constants/icon_constants.dart';
+import 'package:sabka_kirana/common/constants/route_constants.dart';
 import 'package:sabka_kirana/common/libraries/logger/logger.dart';
 import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/login/login_screen_constants.dart';
@@ -85,6 +86,8 @@ class LoginScreenState extends State<LoginScreen> {
                             onTap: () {
                               if (formKey.currentState.validate()) {
                                 LOG.i('Success');
+                                Navigator.of(context)
+                                    .pushReplacementNamed(RouteList.otp);
                               }
                             },
                           ),
