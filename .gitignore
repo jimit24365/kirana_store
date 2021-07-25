@@ -18,3 +18,5 @@ app_mobile/web/*
 .Trashes
 ehthumbs.db
 Thumbs.db
+/.packages
+/pubspec.lock
