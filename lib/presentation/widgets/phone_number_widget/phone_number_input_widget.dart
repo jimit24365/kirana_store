@@ -39,8 +39,8 @@ class PhoneNumberInputWidgetState extends State<PhoneNumberInputWidget> {
         onChanged: (String value) {},
         autofocus: true,
         validator: (String value) {
-          if (value != null &&
-              value.isNotEmpty &&
+          if (value == null ||
+              value.isEmpty ||
               !RegExp(RegexConstants.validPhoneRegex).hasMatch(value
                   .trim()
                   .replaceAll(RegexConstants.hasSpaceCharacter, ''))) {

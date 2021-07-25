@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sabka_kirana/common/constants/common_string_constant.dart';
 import 'package:sabka_kirana/common/constants/icon_constants.dart';
+import 'package:sabka_kirana/common/libraries/logger/logger.dart';
 import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/login/login_screen_constants.dart';
+import 'package:sabka_kirana/presentation/widgets/button/primary_button.dart';
 import 'package:sabka_kirana/presentation/widgets/phone_number_widget/phone_number_input_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen> {
   TabController controller;
   TextEditingController phoneController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -27,7 +30,7 @@ class LoginScreenState extends State<LoginScreen> {
         ],
       ));
 
-  Padding _getLoginForm() => Padding(
+  Widget _getLoginForm() => Padding(
         padding:
             EdgeInsets.only(top: LoginScreenConstants.headerContainerHeight.h),
         child: ClipRRect(
@@ -66,14 +69,43 @@ class LoginScreenState extends State<LoginScreen> {
                 body: TabBarView(
                   children: [
                     Icon(Icons.people),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 16.w, vertical: 50.h),
-                      child: PhoneNumberInputWidget(
-                        textEditingController: phoneController,
+                    Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.w, vertical: 50.h),
+                            child: PhoneNumberInputWidget(
+                              textEditingController: phoneController,
+                            ),
+                          ),
+                          PrimaryButton(
+                            text: 'Signup Using OTP',
+                            onTap: () {
+                              if (formKey.currentState.validate()) {
+                                LOG.i('Success');
+                              }
+                            },
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 16.h),
+                            child: Text(
+                              'Already have an account?',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  .copyWith(
+                                    color: Colors.grey,
+                                  ),
+                            ),
+                          ),
+                          PrimaryButton(
+                            text: 'Login',
+                          ),
+                        ],
                       ),
                     ),
-
                     // OtpWidgetStory().storyContent(context),
                   ],
                 ),
