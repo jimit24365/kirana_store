@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:kirana_store/common/constants/layout_constants.dart';
-import 'package:kirana_store/common/constants/route_constants.dart';
-import 'package:kirana_store/common/libraries/screen_utils/screen_utils.dart';
-import 'package:kirana_store/presentation/routes.dart';
+import 'package:sabka_kirana/common/constants/layout_constants.dart';
+import 'package:sabka_kirana/common/constants/route_constants.dart';
+import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
+import 'package:sabka_kirana/presentation/routes.dart';
 
 class App extends StatelessWidget {
   // This widget is the root of your application.

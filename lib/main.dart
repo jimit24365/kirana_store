@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:kirana_store/common/libraries/logger/logger.dart';
-import 'package:kirana_store/common/setup/setup.dart';
-import 'package:kirana_store/presentation/app.dart';
+import 'package:sabka_kirana/presentation/app.dart';
+
+import 'common/libraries/logger/logger.dart';
+import 'common/setup/setup.dart';
 
 void main() async {
   Setup().init();

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kirana_store/common/constants/common_string_constant.dart';
-import 'package:kirana_store/common/constants/icon_constants.dart';
-import 'package:kirana_store/presentation/journey/onboarding/login/login.dart';
-import 'package:kirana_store/common/libraries/screen_utils/screen_utils.dart';
-import 'package:kirana_store/presentation/journey/splash/splash_constant.dart';
+import 'package:sabka_kirana/common/constants/common_string_constant.dart';
+import 'package:sabka_kirana/common/constants/icon_constants.dart';
+import 'package:sabka_kirana/presentation/journey/onboarding/login/login_screen.dart';
+import 'package:sabka_kirana/presentation/journey/splash/splash_constant.dart';
+import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({
@@ -24,38 +24,38 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
   }
 
-  AnimationController _scheduleLoginScreenAnimation() {
-    return animationController = new AnimationController(
-        duration: Duration(seconds: SplashScreenConstants.splashScreenDuration),
-        vsync: this)
-      ..fling()
-      ..forward()
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          navigateToLoginScreen();
-        }
-      });
-  }
+  AnimationController _scheduleLoginScreenAnimation() =>
+      animationController = new AnimationController(
+          duration:
+              Duration(seconds: SplashScreenConstants.splashScreenDuration),
+          vsync: this)
+        ..fling()
+        ..forward()
+        ..addStatusListener(
+          (status) {
+            if (status == AnimationStatus.completed) {
+              navigateToLoginScreen();
+            }
+          },
+        );
 
-  Future<dynamic> navigateToLoginScreen() {
-    return Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        fullscreenDialog: true,
-        transitionDuration: Duration(
-            milliseconds:
-                SplashScreenConstants.splashToLoginTransitionTimeMilli),
-        transitionsBuilder: (context, animation, secondAnimation, child) {
-          return ScaleTransition(
-            scale: animation,
-            alignment: Alignment.center,
-            child: child,
-          );
-        },
-        pageBuilder: (context, animation, secondAnimation) => Login(),
-      ),
-    );
-  }
+  Future<dynamic> navigateToLoginScreen() => Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          fullscreenDialog: true,
+          transitionDuration: Duration(
+              milliseconds:
+                  SplashScreenConstants.splashToLoginTransitionTimeMilli),
+          transitionsBuilder: (context, animation, secondAnimation, child) {
+            return ScaleTransition(
+              scale: animation,
+              alignment: Alignment.center,
+              child: child,
+            );
+          },
+          pageBuilder: (context, animation, secondAnimation) => LoginScreen(),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) => Scaffold(

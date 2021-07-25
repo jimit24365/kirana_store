@@ -8,8 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:kirana_store/main.dart';
-import 'package:kirana_store/presentation/app.dart';
+import 'package:sabka_kirana/presentation/app.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

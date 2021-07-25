@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:sabka_kirana/common/constants/common_string_constant.dart';
+import 'package:sabka_kirana/common/constants/icon_constants.dart';
+import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
+import 'package:sabka_kirana/presentation/journey/onboarding/login/login_screen_constants.dart';
+
+class LoginScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return LoginScreenState();
+  }
+}
+
+class LoginScreenState extends State<LoginScreen> {
+  @override
+  Widget build(BuildContext context) => Scaffold(
+          body: Stack(
+        fit: StackFit.expand,
+        children: [
+          _getHeaderWidget(context),
+          _getLoginForm(),
+        ],
+      ));
+
+  Padding _getLoginForm() => Padding(
+        padding:
+            EdgeInsets.only(top: LoginScreenConstants.headerContainerHeight.h),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(
+              LoginScreenConstants.loginFormContainerBorderRadius),
+          child: Container(
+            color: Colors.white,
+            height: LoginScreenConstants.loginFormContainerHeight.h,
+          ),
+        ),
+      );
+
+  Container _getHeaderWidget(BuildContext context) => Container(
+        color: Theme.of(context).primaryColor,
+        child: Center(
+          child: Column(
+            children: [
+              _getLogoWidget(),
+              _getAppTitleWidget(context),
+            ],
+          ),
+        ),
+      );
+
+  Padding _getAppTitleWidget(BuildContext context) => Padding(
+        padding: EdgeInsets.only(top: LoginScreenConstants.titlePaddingTop.h),
+        child: Hero(
+          tag: LoginScreenConstants.titleTag,
+          child: Text(CommonStringConstant.appTitle,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline4
+                  .copyWith(color: Colors.white)),
+        ),
+      );
+
+  Padding _getLogoWidget() => Padding(
+        padding: EdgeInsets.only(
+            top: LoginScreenConstants.headerContainerLogoPaddingTop.h),
+        child: Hero(
+          tag: LoginScreenConstants.logoTag,
+          child: Image.asset(
+            IconConstants.whiteLogo,
+            height: LoginScreenConstants.headerContainerLogoHeight.h,
+          ),
+        ),
+      );
+}
