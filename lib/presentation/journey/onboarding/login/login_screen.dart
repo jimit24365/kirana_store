@@ -4,6 +4,7 @@ import 'package:sabka_kirana/common/constants/common_string_constant.dart';
 import 'package:sabka_kirana/common/constants/icon_constants.dart';
 import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/login/login_screen_constants.dart';
+import 'package:sabka_kirana/presentation/widgets/otp_box_widget/otp_widget_story.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -39,35 +40,33 @@ class LoginScreenState extends State<LoginScreen> {
               initialIndex: 1,
               child: Scaffold(
                 backgroundColor: Colors.white,
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(kToolbarHeight),
-                  child: TabBar(
-                    tabs: [
-                      Tab(
-                        child: Text(
-                          LoginScreenConstants.customerTabTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline6
-                              .copyWith(color: Theme.of(context).primaryColor),
-                        ),
+                appBar: TabBar(
+                  tabs: [
+                    Tab(
+                      child: Text(
+                        LoginScreenConstants.customerTabTitle,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6
+                            .copyWith(color: Theme.of(context).primaryColor),
                       ),
-                      Tab(
-                        child: Text(
-                          LoginScreenConstants.storeTabTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline6
-                              .copyWith(color: Theme.of(context).primaryColor),
-                        ),
+                    ),
+                    Tab(
+                      child: Text(
+                        LoginScreenConstants.storeTabTitle,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6
+                            .copyWith(color: Theme.of(context).primaryColor),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 body: TabBarView(
                   children: [
                     Icon(Icons.people),
-                    Icon(Icons.storefront),
+                    Icon(Icons.store)
+                    // OtpWidgetStory().storyContent(context),
                   ],
                 ),
               ),
