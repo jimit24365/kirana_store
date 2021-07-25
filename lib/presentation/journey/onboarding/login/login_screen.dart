@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sabka_kirana/common/constants/common_string_constant.dart';
 import 'package:sabka_kirana/common/constants/icon_constants.dart';
+import 'package:sabka_kirana/common/constants/regex_constants.dart';
 import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/login/login_screen_constants.dart';
-import 'package:sabka_kirana/presentation/widgets/otp_box_widget/otp_widget_story.dart';
+import 'package:sabka_kirana/presentation/journey/onboarding/login/widgets/phone_number_input_widget.dart';
+import 'package:sabka_kirana/presentation/widgets/otp_box_widget/widgets/phone_number_text_input_formatter.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -15,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
   TabController controller;
+  TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -65,7 +69,13 @@ class LoginScreenState extends State<LoginScreen> {
                 body: TabBarView(
                   children: [
                     Icon(Icons.people),
-                    Icon(Icons.store)
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.w, vertical: 50.h),
+                      child: PhoneNumberInputWidget(
+                        textEditingController: phoneController,
+                      ),
+                    ),
                     // OtpWidgetStory().storyContent(context),
                   ],
                 ),
@@ -111,3 +121,5 @@ class LoginScreenState extends State<LoginScreen> {
         ),
       );
 }
+
+
