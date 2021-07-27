@@ -41,12 +41,14 @@ const PRODUCT_DATA = [
     "name": "Mox Stores",
     "rest": "Mumbai central",
     "rating": "3.4 (150)",
-  }, {
+  },
+  {
     "image": IconConstants.store7,
     "name": "Minaxi Stores",
     "rest": "Bandra",
     "rating": "3.4 (100)",
-  }, {
+  },
+  {
     "image": IconConstants.store8,
     "name": "Ahmed Stores",
     "rest": "Kurla",
@@ -81,8 +83,33 @@ class DashBoardScreenState extends State<DashboardScreen> {
       top: true,
       child: Scaffold(
         body: _getBody(textTheme),
+        bottomNavigationBar: _getBottomNavigationBar(context),
       ),
     );
+  }
+
+  BottomNavigationBar _getBottomNavigationBar(BuildContext context) {
+    return BottomNavigationBar(
+        backgroundColor: Theme.of(context).accentColor,
+        currentIndex: 2,
+        elevation: 2.0,
+        showUnselectedLabels: true,
+        showSelectedLabels: true,
+        selectedFontSize: 18,
+        fixedColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Theme.of(context).primaryColor,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag_outlined), label: 'orders'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle), label: 'Category'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.share_rounded), label: 'Marketing'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: 'Profile'),
+        ],
+      );
   }
 
   LayoutBuilder _getBody(TextTheme textTheme) => LayoutBuilder(
@@ -133,7 +160,9 @@ class DashBoardScreenState extends State<DashboardScreen> {
         width: constraints.maxWidth,
         color: Colors.grey.shade200,
         child: Padding(
-          padding: const EdgeInsets.only(left: 5.0, ),
+          padding: const EdgeInsets.only(
+            left: 5.0,
+          ),
           child: Stack(
             clipBehavior: Clip.none,
             children: [
