@@ -24,7 +24,7 @@ class App extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         routes: Routes.getAll(),
-        initialRoute: RouteList.login,
+        initialRoute: RouteList.splash,
       ),
     );
   }
