@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sabka_kirana/common/constants/icon_constants.dart';
 import 'package:sabka_kirana/common/utils/widget_utils.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/category_section/category_section.dart';
+import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/dashboard_screen_constants.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/search_bar/search_bar.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/store_section/store_item_section.dart';
 
@@ -100,15 +101,21 @@ class DashBoardScreenState extends State<DashboardScreen> {
       fixedColor: Theme.of(context).primaryColor,
       unselectedItemColor: Theme.of(context).primaryColor,
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined), label: 'orders'),
+            icon: Icon(Icons.home),
+            label: DashboardScreenConstants.bottomNavigationItemHomeLabel),
         BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle), label: 'Category'),
+            icon: Icon(Icons.shopping_bag_outlined),
+            label: DashboardScreenConstants.bottomNavigationItemOrdersLabel),
         BottomNavigationBarItem(
-            icon: Icon(Icons.share_rounded), label: 'Marketing'),
+            icon: Icon(Icons.add_circle),
+            label: DashboardScreenConstants.bottomNavigationItemCategoryLabel),
         BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle), label: 'Profile'),
+            icon: Icon(Icons.share_rounded),
+            label: DashboardScreenConstants.bottomNavigationItemMarketingLabel),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: DashboardScreenConstants.bottomNavigationItemProfileLabel),
       ],
     );
   }
