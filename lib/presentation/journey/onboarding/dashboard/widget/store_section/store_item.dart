@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sabka_kirana/common/utils/widget_utils.dart';
+import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
 
-class ProductItem extends StatelessWidget {
+class StoreItem extends StatelessWidget {
   final double width;
-  final dynamic productData;
+  final dynamic storeItemData;
 
-  const ProductItem({Key key, @required this.width, @required this.productData})
+  const StoreItem({Key key, @required this.width, @required this.storeItemData})
       : super(key: key);
 
   @override
@@ -43,12 +44,12 @@ class ProductItem extends StatelessWidget {
                     child: CircleAvatar(
                   radius: width * 0.30,
                   foregroundImage: AssetImage(
-                    productData['image'],
+                    storeItemData['image'],
                   ),
                 )),
                 Expanded(child: Center()),
                 Text(
-                  "${productData['name']}",
+                  "${storeItemData['name']}",
                   style: textTheme.headline6,
                 ),
                 addVerticalSpace(5),
@@ -59,7 +60,7 @@ class ProductItem extends StatelessWidget {
                           child: Icon(Icons.location_on,
                               color: Colors.red, size: 15)),
                       TextSpan(
-                          text: "${productData['rest']}",
+                          text: "${storeItemData['rest']}",
                           style: textTheme.caption)
                     ])),
                 addVerticalSpace(15),
@@ -73,9 +74,9 @@ class ProductItem extends StatelessWidget {
                           text: TextSpan(children: [
                             WidgetSpan(
                                 child: Icon(Icons.star,
-                                    color: Colors.orange, size: 15)),
+                                    color: Colors.orange, size: 18.h)),
                             TextSpan(
-                                text: "${productData['rating']}",
+                                text: "${storeItemData['rating']}",
                                 style: textTheme.subtitle2
                                     ?.apply(fontWeightDelta: 4))
                           ])),

@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sabka_kirana/common/constants/color_constants.dart';
 import 'package:sabka_kirana/common/constants/icon_constants.dart';
 import 'package:sabka_kirana/common/utils/widget_utils.dart';
-import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/product_item.dart';
+import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/category_section/category_section.dart';
+import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/search_bar/search_bar.dart';
+import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/store_section/store_item_section.dart';
 
-const PRODUCT_DATA = [
+const stores = [
   {
     "image": IconConstants.store1,
     "name": "Patel Stores",
@@ -90,26 +91,26 @@ class DashBoardScreenState extends State<DashboardScreen> {
 
   BottomNavigationBar _getBottomNavigationBar(BuildContext context) {
     return BottomNavigationBar(
-        backgroundColor: Theme.of(context).accentColor,
-        currentIndex: 2,
-        elevation: 2.0,
-        showUnselectedLabels: true,
-        showSelectedLabels: true,
-        selectedFontSize: 18,
-        fixedColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Theme.of(context).primaryColor,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag_outlined), label: 'orders'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.add_circle), label: 'Category'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.share_rounded), label: 'Marketing'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), label: 'Profile'),
-        ],
-      );
+      backgroundColor: Theme.of(context).accentColor,
+      currentIndex: 2,
+      elevation: 2.0,
+      showUnselectedLabels: true,
+      showSelectedLabels: true,
+      selectedFontSize: 18,
+      fixedColor: Theme.of(context).primaryColor,
+      unselectedItemColor: Theme.of(context).primaryColor,
+      items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined), label: 'orders'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle), label: 'Category'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.share_rounded), label: 'Marketing'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle), label: 'Profile'),
+      ],
+    );
   }
 
   LayoutBuilder _getBody(TextTheme textTheme) => LayoutBuilder(
@@ -133,176 +134,46 @@ class DashBoardScreenState extends State<DashboardScreen> {
         ),
       );
 
-  Container _getBackgroundColor() {
-    return Container(
-      color: Theme.of(context).primaryColor,
-    );
-  }
+  Container _getBackgroundColor() => Container(
+        color: Theme.of(context).primaryColor,
+      );
 
-  Padding _getHeaderWidget(TextTheme textTheme) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _getSearchBarWidget(),
-          addVerticalSpace(10),
-        ],
-      ),
-    );
-  }
-
-  Widget _getMainContainer(
-      BoxConstraints constraints, TextTheme textTheme, BuildContext context) {
-    return Expanded(
-      flex: 6,
-      child: Container(
-        width: constraints.maxWidth,
-        color: Colors.grey.shade200,
-        child: Padding(
-          padding: const EdgeInsets.only(
-            left: 5.0,
-          ),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              _getFoodItemSection(constraints, textTheme, context),
-              _getCategorySection(constraints, textTheme),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  TextField _getSearchBarWidget() {
-    return TextField(
-      focusNode: _focusNode,
-      cursorColor: Colors.white,
-      cursorRadius: Radius.circular(10.0),
-      style: TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-          hintText: "Search Food Items",
-          hintStyle: TextStyle(color: Colors.white),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: BorderSide.none),
-          prefixIcon: Icon(
-            Icons.search,
-            color: Colors.white,
-          ),
-          suffixIcon: Container(
-            height: 70,
-            width: 70,
-            decoration: BoxDecoration(
-                color: Colors.white24,
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20.0),
-                    bottomRight: Radius.circular(20.0))),
-            child: Icon(
-              Icons.menu,
-              color: Colors.white,
-            ),
-          ),
-          filled: true,
-          fillColor: Colors.white24),
-    );
-  }
-
-  Column _getFoodItemSection(
-      BoxConstraints constraints, TextTheme textTheme, BuildContext context) {
-    return Column(
-      children: [
-        addVerticalSpace(constraints.maxWidth * 0.35),
-        _getFoodItemHeaderWidget(textTheme),
-        addVerticalSpace(10),
-        _getFoodItemWidgetList(context, constraints),
-      ],
-    );
-  }
-
-  Row _getFoodItemHeaderWidget(TextTheme textTheme) {
-    return Row(
-      children: [
-        Text(
-          "Stores Near You",
-          style: textTheme.headline5,
-        ),
-        Expanded(
-          child: Center(),
-        ),
-        Text(
-          "View All > ",
-          style: textTheme.subtitle2?.apply(color: COLOR_ORANGE),
-        ),
-        addHorizontalSpace(10),
-      ],
-    );
-  }
-
-  SingleChildScrollView _getFoodItemWidgetList(
-          BuildContext context, BoxConstraints constraints) =>
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        physics: BouncingScrollPhysics(),
-        child: Row(
-          children: PRODUCT_DATA
-              .map((data) => InkWell(
-                    onTap: () {
-                      _focusNode.unfocus();
-                      /* Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              ProductPage(productData: data)));*/
-                    },
-                    child: ProductItem(
-                      width: constraints.maxWidth * 0.40,
-                      productData: data,
-                    ),
-                  ))
-              .toList(),
+  Padding _getHeaderWidget(TextTheme textTheme) => Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SearchBar(focusNode: _focusNode),
+            addVerticalSpace(10),
+          ],
         ),
       );
 
-  Positioned _getCategorySection(
-          BoxConstraints constraints, TextTheme textTheme) =>
-      Positioned(
-        top: -40,
-        left: 0,
+  Widget _getMainContainer(BoxConstraints constraints, TextTheme textTheme,
+          BuildContext context) =>
+      Expanded(
+        flex: 6,
         child: Container(
           width: constraints.maxWidth,
-          height: constraints.maxWidth * 0.35,
-          child: _getCategoryRow(constraints, textTheme),
-        ),
-      );
-
-  ListView _getCategoryRow(BoxConstraints constraints, TextTheme textTheme) =>
-      ListView(
-        scrollDirection: Axis.horizontal,
-        physics: BouncingScrollPhysics(),
-        children: CATEGORIES
-            .map((category) =>
-                _getCategoryItemWidget(constraints, category, textTheme))
-            .toList(),
-      );
-
-  Container _getCategoryItemWidget(BoxConstraints constraints,
-          Map<String, String> category, TextTheme textTheme) =>
-      Container(
-        margin: const EdgeInsets.only(right: 10.0),
-        width: constraints.maxWidth * 0.25,
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              Expanded(flex: 4, child: Image.asset(category['image'])),
-              addVerticalSpace(30),
-              Text(
-                category['name'],
-                style: textTheme.subtitle1?.apply(color: Colors.black),
-              ),
-            ],
+          color: Colors.grey.shade200,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 5.0,
+            ),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                StoresItemSection(
+                  stores: stores,
+                  constraints: constraints,
+                  focusNode: _focusNode,
+                ),
+                CategorySection(
+                  constraints: constraints,
+                  categories: CATEGORIES,
+                ),
+              ],
+            ),
           ),
         ),
       );
