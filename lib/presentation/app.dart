@@ -18,7 +18,6 @@ class App extends StatelessWidget {
         LayoutConstants.designHeight,
       ),
       builder: () => MaterialApp(
-        title: 'Sabka Kirana',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
