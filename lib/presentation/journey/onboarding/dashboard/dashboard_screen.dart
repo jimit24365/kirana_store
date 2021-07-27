@@ -6,6 +6,7 @@ import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/ca
 import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/dashboard_screen_constants.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/search_bar/search_bar.dart';
 import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/store_section/store_item_section.dart';
+import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
 
 const stores = [
   {
@@ -146,12 +147,12 @@ class DashBoardScreenState extends State<DashboardScreen> {
       );
 
   Padding _getHeaderWidget(TextTheme textTheme) => Padding(
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(DashboardScreenConstants.headerWidgetPadding.h),
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SearchBar(focusNode: _focusNode),
-            addVerticalSpace(10),
+            addVerticalSpace(DashboardScreenConstants.searchBarVerticalSpace.h),
           ],
         ),
       );
@@ -159,13 +160,13 @@ class DashBoardScreenState extends State<DashboardScreen> {
   Widget _getMainContainer(BoxConstraints constraints, TextTheme textTheme,
           BuildContext context) =>
       Expanded(
-        flex: 6,
+        flex: DashboardScreenConstants.topContainerFlex,
         child: Container(
           width: constraints.maxWidth,
           color: Colors.grey.shade200,
           child: Padding(
-            padding: const EdgeInsets.only(
-              left: 5.0,
+            padding: EdgeInsets.only(
+              left: DashboardScreenConstants.topContainerPadding.w,
             ),
             child: Stack(
               clipBehavior: Clip.none,

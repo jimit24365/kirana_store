@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sabka_kirana/common/utils/widget_utils.dart';
+import 'package:sabka_kirana/presentation/journey/onboarding/dashboard/widget/category_section/category_section_constants.dart';
+import 'package:sabka_kirana/common/libraries/screen_utils/screen_utils.dart';
 
 class CategorySection extends StatefulWidget {
   final BoxConstraints constraints;
@@ -20,11 +22,12 @@ class CategorySection extends StatefulWidget {
 class CategorySectionState extends State<CategorySection> {
   @override
   Widget build(BuildContext context) => Positioned(
-        top: -40,
-        left: 0,
+        top: CategorySectionConstants.containerTopPosition.h,
+        left: CategorySectionConstants.containerLeftPosition.w,
         child: Container(
           width: widget.constraints.maxWidth,
-          height: widget.constraints.maxWidth * 0.35,
+          height: widget.constraints.maxWidth *
+              CategorySectionConstants.containerHeightMultiplier,
           child:
               _getCategoryRow(widget.constraints, Theme.of(context).textTheme),
         ),
@@ -43,16 +46,23 @@ class CategorySectionState extends State<CategorySection> {
   Container _getCategoryItemWidget(BoxConstraints constraints,
           Map<String, String> category, TextTheme textTheme) =>
       Container(
-        margin: const EdgeInsets.only(right: 10.0),
-        width: constraints.maxWidth * 0.25,
+        margin: EdgeInsets.only(
+            right: CategorySectionConstants.categoryItemMarginRight.w),
+        width: constraints.maxWidth *
+            CategorySectionConstants.containerWidthMultiplier,
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(
+              CategorySectionConstants.containerBorderRadius),
+        ),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(CategorySectionConstants.imagePadding),
           child: Column(
             children: [
-              Expanded(flex: 4, child: Image.asset(category['image'])),
-              addVerticalSpace(30),
+              Expanded(
+                  flex: CategorySectionConstants.assetFlex,
+                  child: Image.asset(category['image'])),
+              addVerticalSpace(CategorySectionConstants.imageVerticalSpace),
               Text(
                 category['name'],
                 style: textTheme.subtitle1?.apply(color: Colors.black),
