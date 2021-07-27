@@ -50,7 +50,7 @@ class OTPScreenState extends State<OTPScreen> {
                           value.length == otpThreshold &&
                           value == validOTP) {
                         Navigator.of(context)
-                            .pushReplacementNamed(RouteList.splash);
+                            .pushReplacementNamed(RouteList.dashboard);
                       }
                     },
                   ),

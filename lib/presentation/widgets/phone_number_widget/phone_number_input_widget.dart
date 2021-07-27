@@ -34,7 +34,7 @@ class PhoneNumberInputWidgetState extends State<PhoneNumberInputWidget> {
           PhoneNumberTextInputFormatter(),
         ],
         maxLength: 12,
-        style: Theme.of(context).textTheme.headline6.copyWith(height: 2.25),
+        style: Theme.of(context).textTheme.headline6.copyWith(height: 1.35),
         controller: widget.textEditingController,
         onChanged: (String value) {},
         autofocus: true,
@@ -49,7 +49,7 @@ class PhoneNumberInputWidgetState extends State<PhoneNumberInputWidget> {
           return null;
         },
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(bottom: 2.25),
+          // contentPadding: EdgeInsets.only(bottom: 2.25),
           hintText: 'Phone Number',
           filled: true,
           fillColor: Colors.white,

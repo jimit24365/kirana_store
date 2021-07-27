@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sabka_kirana/common/constants/layout_constants.dart';
 import 'package:sabka_kirana/common/constants/route_constants.dart';
@@ -9,6 +10,8 @@ class App extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Theme.of(context).primaryColor));
     return ScreenUtilsInit(
       designSize: const Size(
         LayoutConstants.designWidth,
@@ -21,7 +24,7 @@ class App extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         routes: Routes.getAll(),
-        initialRoute: RouteList.splash,
+        initialRoute: RouteList.dashboard,
       ),
     );
   }

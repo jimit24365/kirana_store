@@ -35,8 +35,12 @@ class LoginScreenState extends State<LoginScreen> {
         padding:
             EdgeInsets.only(top: LoginScreenConstants.headerContainerHeight.h),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(
-              LoginScreenConstants.loginFormContainerBorderRadius),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(
+                LoginScreenConstants.loginFormContainerBorderRadius),
+            topRight: Radius.circular(
+                LoginScreenConstants.loginFormContainerBorderRadius),
+          ),
           child: Container(
             color: Colors.white,
             height: LoginScreenConstants.loginFormContainerHeight.h,
@@ -74,11 +78,13 @@ class LoginScreenState extends State<LoginScreen> {
                       key: formKey,
                       child: Column(
                         children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16.w, vertical: 50.h),
-                            child: PhoneNumberInputWidget(
-                              textEditingController: phoneController,
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16.w, vertical: 50.h),
+                              child: PhoneNumberInputWidget(
+                                textEditingController: phoneController,
+                              ),
                             ),
                           ),
                           PrimaryButton(
@@ -103,8 +109,11 @@ class LoginScreenState extends State<LoginScreen> {
                                   ),
                             ),
                           ),
-                          PrimaryButton(
-                            text: 'Login',
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 10.h),
+                            child: PrimaryButton(
+                              text: 'Login',
+                            ),
                           ),
                         ],
                       ),
